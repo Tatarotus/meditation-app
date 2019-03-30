@@ -1,3 +1,103 @@
-body {
-  background: #eee;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* App Layout */
+#app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+/*Rainy Background*/
+.default-bg {
+  position: fixed;
+  height: 100vh;
+  z-index: -1;
+}
+
+
+/* Button Styles */
+button {
+  background-color: transparent;
+  border: 3px solid #fff;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: center;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.sound-picker button {
+  border: none;
+  border-radius: 50%;
+  padding: 8%;
+}
+
+.sound-picker button:nth-child(1) {
+  background: #4972a1;
+}
+
+.sound-picker button:nth-child(2) {
+  background: #a14f49;
+}
+
+.time-select button {
+  color: #fff;
+  padding: 1rem 10%;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.time-select button:hover {
+  box-shadow: 0 0 40px 40px #f3f3f3 inset;
+  color: #000;
+}
+
+.time-select {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Player Style */
+.player-container {
+  display: flex;
+  position: relative;
+  flex: 1.5;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause,
+.moving-outline {
+  display: none;
+}
+
+.player-container .time {
+  position: relative;
+  top: 30%;
+  font-size: 3rem;
+}
+
+.player-container svg {
+  width: 70%;
+  position: absolute;
+}
+
+/* Sound Picker Styles */
+.sound-picker {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: space-evenly;
 }
