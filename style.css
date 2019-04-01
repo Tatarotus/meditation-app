@@ -21,7 +21,6 @@
   z-index: -1;
 }
 
-
 /* Button Styles */
 button {
   background-color: transparent;
@@ -100,4 +99,50 @@ button {
   flex: 1;
   align-items: center;
   justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 631px) {
+  #app {
+    display: flex;
+  }
+
+  .time-select {
+    order: 2;
+    flex-direction: row;
+    padding: 0;
+    position: absolute;
+    top: 2vh;
+    left: 50%;
+    width: 0;
+  }
+  
+  .time-select button {
+    padding: 10px;
+    margin: 4vw;
+  }
+
+  .player-container {
+    order: 1;
+    min-width: 100%;
+  }
+
+  .sound-picker {
+    order: 3;
+    position: absolute;
+    flex-direction: row;
+    bottom: 8vh;
+    left: 50vw;
+    width: 0;
+    height: 0;
+  }
+  
+  .sound-picker button {
+    padding: 5px;
+    margin: 60px;
+  }
+  .sound-picker svg {
+    width: 57px;
+    height: 57px;
+  }
+  
 }
