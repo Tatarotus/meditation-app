@@ -87,11 +87,28 @@ button {
   font-size: 3rem;
 }
 
-.player-container svg {
+.player-container .track-outline,
+.player-container .moving-outline {
   width: 70%;
-  position: absolute;
 }
 
+.player-container svg {
+  position: absolute;
+  pointer-events: none;
+}
+
+.play-pause-btn {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  width: 204px; /*204px*/
+  height: 91px; /*91px*/
+}
+
+.play,
+.pause {
+  width: 40%;
+}
 /* Sound Picker Styles */
 .sound-picker {
   display: flex;
@@ -115,7 +132,7 @@ button {
     left: 50%;
     width: 0;
   }
-  
+
   .time-select button {
     padding: 10px;
     margin: 4vw;
@@ -135,7 +152,7 @@ button {
     width: 0;
     height: 0;
   }
-  
+
   .sound-picker button {
     padding: 5px;
     margin: 60px;
@@ -144,5 +161,8 @@ button {
     width: 57px;
     height: 57px;
   }
-  
+  .play-pause-btn {
+    width: 154px; /*204px*/
+    height: 91px; /*91px*/
+  }
 }
