@@ -6,12 +6,13 @@ window.addEventListener('DOMContentLoaded', function(event) {
   const pauseSvg = document.querySelector('.pause');
   const playPauseBtn = document.querySelector('.play-pause-btn');
   const videoBg = document.querySelector('.default-bg');
+  const song = document.querySelector('.song');
   const changeBgBtns = document.querySelectorAll('.sound-picker button');
 
 
   let play = false;
-  let videoSrc = videoBg.firstElementChild.getAttribute('src');
-  console.log(videoSrc);
+  let videoSrc; //Later change this variable thought button press
+  let audioSrc; //Later change this variable thought button press
 
   //Functions
   function playerHandler() {
@@ -21,6 +22,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
       playSvg.style.display = 'none';
       pauseSvg.style.display = 'flex';
       
+      song.play();
       videoBg.play();
     //Stop video from playing
     } else {
@@ -29,6 +31,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
       playSvg.style.display = 'flex';
       pauseSvg.style.display = 'none';
 
+      song.pause();
       videoBg.pause();
     }
   }
@@ -37,17 +40,25 @@ window.addEventListener('DOMContentLoaded', function(event) {
     playerHandler();
   });
 
+  //Change Bg and Audio Event
   changeBgBtns.forEach(bgOption => {
     bgOption.onclick = function () {
       //Get the video URL
       videoSrc = bgOption.getAttribute('data-video');
+      //Set video URL
       videoBg.firstElementChild.setAttribute('src', videoSrc);
-      //Load the video
+      //Get audio URL
+      audioSrc = (this.getAttribute('data-sound'));
+      //Set audio URL
+      song.firstElementChild.setAttribute('src', audioSrc);
+      //Load audio and video
       videoBg.load();
+      song.load();
       //Stops execution if it's playing
       if (play === true) {
         playerHandler();
       }
     }
   })
+
 });
