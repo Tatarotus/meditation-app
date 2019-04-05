@@ -1,6 +1,4 @@
 window.addEventListener('DOMContentLoaded', function(event) {
-  console.log('DOM fully loaded and parsed');
-
   //DOM variables
   const playSvg = document.querySelector('.play');
   const pauseSvg = document.querySelector('.pause');
@@ -42,6 +40,12 @@ window.addEventListener('DOMContentLoaded', function(event) {
     playerHandler();
   });
 
+  document.addEventListener('keyup', (e) => {
+    if(e.keyCode === 13 || e.keyCode === 32) {
+      playerHandler();
+    } 
+  });
+
   //Change Bg and Audio Event
   changeBgBtns.forEach(bgOption => {
     bgOption.onclick = function() {
@@ -67,7 +71,6 @@ window.addEventListener('DOMContentLoaded', function(event) {
     let remainingTime = duration - song.currentTime;
     let min = ~~((remainingTime % 3600) / 60);
     let secs = ~~(remainingTime % 60);
-    console.log(min, secs);
     if (remainingTime > 0) {
       time.innerHTML = `${min}:${secs}`;
       //#1 checks if it is more than 1 min and adds a leading 0 if seconds is less than 10
@@ -89,18 +92,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
   durationBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       let newDuration = parseInt(btn.getAttribute('data-time'));
-
-      switch (newDuration) {
-        case 120:
-          duration = newDuration;
-          break;
-        case 300:
-          duration = newDuration;
-          break;
-        case 600:
-          duration = newDuration;
-          break;
-      }
+      duration = newDuration;
     });
   });
 });

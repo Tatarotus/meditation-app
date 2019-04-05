@@ -122,6 +122,8 @@ button {
 
   #app {
     display: flex;
+    touch-action: none;
+    overflow: hidden;
   }
 
   .time-select {
