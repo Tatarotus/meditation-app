@@ -119,6 +119,7 @@ button {
 }
 
 @media only screen and (max-width: 631px) {
+
   #app {
     display: flex;
   }
@@ -131,6 +132,7 @@ button {
     top: 2vh;
     left: 50%;
     width: 0;
+    z-index: 2;
   }
 
   .time-select button {
