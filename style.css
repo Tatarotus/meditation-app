@@ -76,8 +76,7 @@ button {
   justify-content: center;
 }
 
-.pause,
-.moving-outline {
+.pause {
   display: none;
 }
 
@@ -119,7 +118,6 @@ button {
 }
 
 @media only screen and (max-width: 631px) {
-
   #app {
     display: flex;
     touch-action: none;

@@ -3,16 +3,23 @@ window.addEventListener('DOMContentLoaded', function(event) {
   const playSvg = document.querySelector('.play');
   const pauseSvg = document.querySelector('.pause');
   const playPauseBtn = document.querySelector('.play-pause-btn');
+  const outline = document.querySelector('.moving-outline circle');
   const videoBg = document.querySelector('.default-bg');
   const song = document.querySelector('.song');
   const changeBgBtns = document.querySelectorAll('.sound-picker button');
   const time = document.querySelector('.time');
   const durationBtns = document.querySelectorAll('.time-select button');
 
-  let duration = 120;
+  const outlineLength = outline.getTotalLength();
+
+  let duration = 15;
   let play = false;
   let videoSrc; //Later change this variable thought button press
   let audioSrc; //Later change this variable thought button press
+
+  //Set the progress "blue circle" to 0;
+  outline.style.strokeDasharray = outlineLength;
+  outline.style.strokeDashoffset = outlineLength;
 
   //Functions
   function playerHandler() {
@@ -35,15 +42,16 @@ window.addEventListener('DOMContentLoaded', function(event) {
       videoBg.pause();
     }
   }
+  
   //JS Events
   playPauseBtn.addEventListener('click', function() {
     playerHandler();
   });
 
-  document.addEventListener('keyup', (e) => {
-    if(e.keyCode === 13 || e.keyCode === 32) {
+  document.addEventListener('keyup', e => {
+    if (e.keyCode === 13 || e.keyCode === 32) {
       playerHandler();
-    } 
+    }
   });
 
   //Change Bg and Audio Event
@@ -67,7 +75,8 @@ window.addEventListener('DOMContentLoaded', function(event) {
     };
   });
 
-  function updateTimer() {
+  // Get the time left and animate the progress bar "blue circle"
+  song.ontimeupdate = () => {
     let remainingTime = duration - song.currentTime;
     let min = ~~((remainingTime % 3600) / 60);
     let secs = ~~(remainingTime % 60);
@@ -76,18 +85,18 @@ window.addEventListener('DOMContentLoaded', function(event) {
       //#1 checks if it is more than 1 min and adds a leading 0 if seconds is less than 10
       //#2 checks if it is less than 1 (there is no minute = 0) and only displays seconds
       //#3 if it's more than one minute and more than 10 seconds display time normaly
-      time.innerHTML = min >=1 && secs < 10 ? min + ':0' + secs : min === 0 ? secs : `${min}:${secs}`;
+      time.innerHTML =
+        min >= 1 && secs < 10
+          ? min + ':0' + secs
+          : min === 0
+          ? secs
+          : `${min}:${secs}`;
     } else {
       videoBg.load();
       song.load();
       playerHandler();
-      stop();
     }
   }
-  //Get the time left
-  song.addEventListener('timeupdate', () => {
-    updateTimer();
-  });
 
   durationBtns.forEach(btn => {
     btn.addEventListener('click', () => {
