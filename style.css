@@ -96,6 +96,10 @@ button {
   pointer-events: none;
 }
 
+.moving-outline {
+  transform: rotate(-90deg);
+}
+
 .play-pause-btn {
   display: flex;
   position: absolute;
@@ -149,7 +153,7 @@ button {
     order: 3;
     position: absolute;
     flex-direction: row;
-    bottom: 8vh;
+    bottom: 9vh;
     left: 50vw;
     width: 0;
     height: 0;
@@ -157,7 +161,7 @@ button {
 
   .sound-picker button {
     padding: 5px;
-    margin: 60px;
+    margin: 10px 60px 20px 60px;
   }
   .sound-picker svg {
     width: 57px;

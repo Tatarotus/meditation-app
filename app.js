@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
 
   const outlineLength = outline.getTotalLength();
 
-  let duration = 15;
+  let duration = 60;
   let play = false;
   let videoSrc; //Later change this variable thought button press
   let audioSrc; //Later change this variable thought button press
@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
       videoBg.pause();
     }
   }
-  
+
   //JS Events
   playPauseBtn.addEventListener('click', function() {
     playerHandler();
@@ -96,7 +96,12 @@ window.addEventListener('DOMContentLoaded', function(event) {
       song.load();
       playerHandler();
     }
-  }
+
+    // Animate the circle offset
+    let progress =
+      outlineLength - (song.currentTime / duration) * outlineLength;
+    outline.style.strokeDashoffset = progress;
+  };
 
   durationBtns.forEach(btn => {
     btn.addEventListener('click', () => {
